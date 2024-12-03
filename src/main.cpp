@@ -10,9 +10,8 @@ int main(int argc, char** argv)
             std::cerr << "Error: " << res.second << std::endl;
             exit(EXIT_FAILURE);
         }
-        std::string file = read_file("ast.txt");
-        file = format_file(file);
-        write_file("ast.txt", file);
+        res.second = format_file(res.second);
+        write_file("ast.txt", res.second);
     }
     else {
         std::cout << "Usage: pytype <filepath>" << std::endl;

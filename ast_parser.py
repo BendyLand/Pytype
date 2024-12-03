@@ -25,8 +25,7 @@ def main(args):
         file = read_file(args[1])
         tree = ast.parse(file)
         contents = get_contents(tree)
-        write_file("ast.txt", contents)
-        print("File written successfully!")
+        print(contents)
     else:
         print("Usage: pytype <filepath>")
 

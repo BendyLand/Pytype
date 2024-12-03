@@ -1,0 +1,60 @@
+Module(
+    body=[
+        Expr(
+            value=Call(
+                func=Name(
+                    id='print', 
+                    ctx=Load()
+                ), 
+                args=[Constant(value='Hello, world!')], 
+                keywords=[]
+            )
+        ), 
+        Assign(
+            targets=[
+                Name(
+                    id='x', 
+                    ctx=Store()
+                )
+            ], 
+            value=Constant(value=10)
+        ), 
+        If(
+            test=Compare(
+                left=Name(
+                    id='x', 
+                    ctx=Load()
+                ), 
+                ops=[Lt()], 
+                comparators=[
+                    Constant(value=5)
+                ]
+            ), 
+            body=[
+                Expr(
+                    value=Call(
+                        func=Name(
+                            id='print', 
+                            ctx=Load()
+                        ), 
+                        args=[Constant(value='x is less than 5')], 
+                        keywords=[]
+                    )
+                )
+            ], 
+            orelse=[
+                Expr(
+                    value=Call(
+                        func=Name(
+                            id='print', 
+                            ctx=Load()
+                        ), 
+                        args=[Constant(value='x is more than 4')], 
+                        keywords=[]
+                    )
+                )
+            ]
+        )
+    ], 
+    type_ignores=[]
+)
