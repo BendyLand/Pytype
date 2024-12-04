@@ -35,6 +35,18 @@
     #include <Windows.h>
 #endif
 
+#ifdef OS_UNIX_LIKE
+    #define OS_UNIX_LIKE_DEFINED 1
+#else
+    #define OS_UNIX_LIKE_DEFINED 0
+#endif
+
+#ifdef OS_WINDOWS
+    #define OS_WINDOWS_DEFINED 1
+#else
+    #define OS_WINDOWS_DEFINED 0
+#endif
+
 class OS
 {
 public:

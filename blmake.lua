@@ -5,7 +5,7 @@
 
 Build = {
     compiler = "g++",                  -- e.g., "g++"
-    files = {"main.cpp", "utils.cpp", "files.cpp", "os.cpp"}, -- e.g., {"main.cpp", "utils.cpp"}
+    files = {"main.cpp", "utils.cpp", "files.cpp", "os.cpp", "parser.cpp"}, -- e.g., {"main.cpp", "utils.cpp"}
     lang_exts = {"-std=c++20"},        -- e.g., {"-std=c++20"}
     include_dirs = {},                 -- Directories for include files (optional)
     dependencies = {},                 -- Libraries to link against, e.g. {"lib1", "lib2"}

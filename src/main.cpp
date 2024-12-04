@@ -1,6 +1,7 @@
 #include "utils.hpp"
 #include "os.hpp"
 #include "files.hpp"
+#include "parser.hpp"
 
 int main(int argc, char** argv)
 {
@@ -11,12 +12,12 @@ int main(int argc, char** argv)
             exit(EXIT_FAILURE);
         }
         res.second = format_file(res.second);
-        write_file("ast.txt", res.second);
+        Parser parser(res.second);
+        Lines lines = parser.lines();
+        // write_file("ast.txt", res.second);
     }
     else {
         std::cout << "Usage: pytype <filepath>" << std::endl;
     }
-
     return 0;
 }
-

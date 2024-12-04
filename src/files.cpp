@@ -56,7 +56,12 @@ std::string format_file(const std::string& file)
 
 std::pair<int, std::string> generate_ast(const std::string& path)
 {
-    std::string command = "./python3 ast_parser.py " + path; 
+    std::string command;
+#if OS_UNIX_LIKE_DEFINED
+    command = "./python3 ast_parser.py " + path;  
+#else
+    command = "python3.exe " + path;  
+#endif
     std::pair<int, std::string> res = OS::run_command(command);
     return res;
 }

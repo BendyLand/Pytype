@@ -31,3 +31,16 @@ std::string gen_indents(int indents)
     for (int i = 0; i < indents; i++) result += "\t";
     return result;
 }
+
+std::vector<std::string> split(const std::string& str, const std::string& delim)
+{
+    std::vector<std::string> result;
+    std::string temp = str;
+    while (temp.find(delim) != std::string::npos) {
+        std::string token = temp.substr(0, temp.find(delim));
+        result.emplace_back(token);
+        temp.erase(0, temp.find(delim)+delim.length());
+    }
+    if (temp.size() > 0) result.emplace_back(temp);
+    return result;
+}
