@@ -3,10 +3,16 @@
 std::string Lines::parse_constant_assign_block(size_t current)
 {
     while (this->current_pos() < current) this->increment_pos();
+    while (this->current_line().value().find("Assign(") == std::string::npos) {
+        this->increment_pos();
+        if (this->current_pos() > this->size()) return "ERROR: Out of bounds 1.";
+    }
+    size_t name_pos;
     while (this->current_line().value().find("Name(") == std::string::npos) {
         this->increment_pos();
-        if (this->current_pos() > this->size()) return "ERROR: Out of valid range of lines.";
+        if (this->current_pos() > this->size()) return "ERROR: Out of bounds 2.";
     }
+    name_pos = this->current_pos();
     std::string id_line = this->next_line().value();
     size_t start = id_line.find("'");
     size_t end = id_line.find_last_of("'") - 1;
@@ -15,7 +21,8 @@ std::string Lines::parse_constant_assign_block(size_t current)
         result += id_line.substr(start+1, end-start) + "=";
         while (this->current_line().value().find("value=Constant(") == std::string::npos) {
             this->increment_pos();
-            if (this->current_pos() > this->size()) return "ERROR: Out of valid range of lines.";
+            if (this->current_pos() - name_pos > 10) return "";
+            if (this->current_pos() > this->size()) return "ERROR: Out of bounds 3.";
         }
         std::string val_line = this->next_line().value();
         start = val_line.find("=");

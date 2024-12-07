@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./build/main test.py
+./build/main test2.py 

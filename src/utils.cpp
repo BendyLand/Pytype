@@ -1,5 +1,17 @@
 #include "utils.hpp"
 
+std::vector<std::string> filter_empty(const std::vector<std::string>& vec)
+{
+    std::vector<std::string> result;
+    result.reserve(vec.size());
+    for (const std::string& entry : vec) {
+        if (entry.empty()) continue;
+        result.emplace_back(entry);
+    }
+    result.resize(result.size());
+    return result;
+}
+
 std::string ltrim(const std::string& str)
 {
     size_t start = str.find_first_not_of("\t");
@@ -42,6 +54,7 @@ void write_file(const std::string& path, const std::string& contents)
         std::cerr << "Unable to open file: " << path << std::endl;
         exit(EXIT_FAILURE);
     }
+    file.clear();
     for (char c : contents) file << c;
     file.close();
 }

@@ -20,7 +20,10 @@ int main(int argc, char** argv)
             if (assign_block.find("ERROR") != std::string::npos) continue;
             const_assignments.emplace_back(assign_block);
         }
-		// write_file("ast.txt", res.second);
+        //todo: maybe integrate python's "typing" module for inference
+        const_assignments = filter_empty(const_assignments);
+        std::cout << const_assignments << std::endl;
+		write_file("ast.txt", res.second);
 	}
 	else {
 		std::cout << "Usage: pytype <filepath>" << std::endl;
