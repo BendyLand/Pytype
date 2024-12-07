@@ -1,5 +1,26 @@
 #include "utils.hpp"
 
+std::string ltrim(const std::string& str)
+{
+    size_t start = str.find_first_not_of("\t");
+    if (start == 0) start = str.find_first_not_of(" ");
+    return str.substr(start);
+}
+
+std::string rtrim(const std::string& str)
+{
+    size_t end = str.find_last_not_of(" ");
+    return str.substr(0, end+1);
+}
+
+std::string trim(const std::string& str)
+{
+    std::string result = str;
+    result = ltrim(result);
+    result = rtrim(result);
+    return result;
+}
+
 std::string read_file(const std::string& path)
 {
     std::string result = "";

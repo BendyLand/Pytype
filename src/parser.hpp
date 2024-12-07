@@ -17,6 +17,7 @@ public:
     size_t current_pos();
     std::string step_down();
     std::string step_up();
+    std::string parse_constant_assign_block(size_t current);
     Lines(const std::string& text) 
         : _current(0), _lines(split(text, "\n")) 
     {}
